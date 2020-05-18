@@ -6,7 +6,7 @@ AUTHOR = 'zst123'
 SITENAME = "Manzel's Blog"
 SITEURL = ''
 
-THEME = 'themes/tuxlite_zf'
+THEME = 'mytheme'
 PATH = 'content'
 
 TIMEZONE = 'Asia/Singapore'
@@ -31,7 +31,7 @@ SOCIAL = (
     ('LinkedIn', 'https://www.linkedin.com/in/manzelseet/'),
 )
 
-DEFAULT_PAGINATION = False
+DEFAULT_PAGINATION = 3
 
 STATIC_PATHS = ['downloads']
 #ARTICLE_PATHS = ['blog']
