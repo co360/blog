@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = 'zst123'
 SITENAME = "Manzel's Blog"
-SITEURL = 'https://blog.manzelseet.com'
+SITEURL = ''
 
 THEME = 'themes/tuxlite_zf'
 PATH = 'content'
