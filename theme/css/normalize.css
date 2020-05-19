@@ -79,6 +79,7 @@ html {
 
 body {
     margin: 0;
+    font-size: 0.9em !important;
 }
 
 /* ==========================================================================
@@ -170,6 +171,10 @@ pre,
 samp {
     font-family: monospace, serif;
     font-size: 1em;
+}
+
+div.highlight {
+    font-size: 0.85em;
 }
 
 /**
