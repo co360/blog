@@ -59,7 +59,7 @@
     <h3>Introduction</h3>
 <p>About a year ago, I bought some cheap Altera MAX II CPLD boards from eBay. I remember it was pretty cheap, about USD10 with free shipping for both the board and programmer.</p>
 <p>However, I never really got to it because of my busy schedule last year. Now with stay home measures in place due to the pandemic, I finally have time to start learning about CPLDs.</p>
-<p><img src="chinese-altera-cpld_image1.jpg"
+<p><img src="./chinese-altera-cpld_image1.jpg"
      alt="EPM240 Dev Board"
      style="width: 50%; margin: auto; display: block;"/></p>
 <p>There are a few guides on how to program this CPLD board on Windows OS. Hence, in this post, I'll focus on going through with my Ubuntu setup.</p>
@@ -88,12 +88,12 @@
 <h4>Install Quartus Prime Lite</h4>
 <p>As of writing, the latest version of the IDE is <strong>Quartus Prime Lite Edition 19.1</strong>.</p>
 <p>To keep things simple, I downloaded the Combined Files installer: <code>Quartus-lite-19.1.0.670-linux.tar</code>.</p>
-<p><img src="chinese-altera-cpld_image2.png"
+<p><img src="./chinese-altera-cpld_image2.png"
      alt="Extracted files"
      style="width: 75%; margin: auto; display: block;"/></p>
 <p>After extracting, run <code>bash setup.sh</code> in Terminal.</p>
 <p>As the install files are huge, I decided to uncheck all other devices except for the Max II series.</p>
-<p><img src="chinese-altera-cpld_image3.png"
+<p><img src="./chinese-altera-cpld_image3.png"
      alt="Installer"
      style="width: 75%; margin: auto; display: block;"/></p>
 <h4>Starting Quartus Prime Lite</h4>
@@ -104,10 +104,10 @@
 <p>Finally, start Quartus Prime Lite</p>
 <p><code>~/intelFPGA_lite/19.1/quartus/bin/quartus &amp;</code></p>
 <p>You will see the start screen.</p>
-<p><img alt="" src="chinese-altera-cpld_image4.png"></p>
+<p><img alt="" src="./chinese-altera-cpld_image4.png"></p>
 <h4>Hello World Project</h4>
 <p>Create a new project using <code>New Project Wizard</code> and then create a new <code>Verilog HDL file</code>.</p>
-<p><img alt="" src="chinese-altera-cpld_image5.png"></p>
+<p><img alt="" src="./chinese-altera-cpld_image5.png"></p>
 <p>This the Verilog code for blinking an LED. </p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Pin 12 = clk (50MHz Crystal)</span>
 <span class="c1">// Pin 77 = led (Red LED)</span>
@@ -129,11 +129,11 @@
 
 
 <p>Make sure to assign the pins under <code>Pin Planner</code> too.</p>
-<p><img alt="" src="chinese-altera-cpld_image6a.png"></p>
+<p><img alt="" src="./chinese-altera-cpld_image6a.png"></p>
 <p>After which, click on <code>Programmer</code> &gt; <code>Auto detect</code> &gt; <code>Start</code> to program the board.</p>
 <h4>Launch Script &amp; Dark Theme Workaround</h4>
 <p>I have been using a dark theme on my system. However, the <code>Pin Planner</code> is unusable with a dark theme. As seen below, the selection rows have a white text and a bright background.</p>
-<p><img alt="" src="chinese-altera-cpld_image6b.png"></p>
+<p><img alt="" src="./chinese-altera-cpld_image6b.png"></p>
 <p>The workaround is to <a href="https://askubuntu.com/a/427440">launch the app with a white theme</a>.</p>
 <p>I decided to create a launch script to do everything for me.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Settings</span>

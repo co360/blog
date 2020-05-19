@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Manzel's Blog - FPGA/CPLD</title><link href="./" rel="alternate"></link><link href="feeds/fpgacpld.atom.xml" rel="self"></link><id>./</id><updated>2020-05-19T09:16:00+08:00</updated><entry><title>Chinese Altera Max II CPLDs - Hello World in Ubuntu</title><link href="chinese-altera-cpld.html" rel="alternate"></link><published>2020-05-19T09:16:00+08:00</published><updated>2020-05-19T09:16:00+08:00</updated><author><name>zst123</name></author><id>tag:None,2020-05-19:chinese-altera-cpld.html</id><summary type="html">&lt;p&gt;About a year ago, I bought some cheap Altera MAX II CPLD boards from eBay. I remember it was pretty cheap, about USD10 with free shipping for both the board and programmer. However, I never really got to it because of my busy schedule last year. Now with stay home measures in place due to the pandemic, I finally have time to start learning about CPLDs.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Introduction&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Manzel's Blog - FPGA/CPLD</title><link href="./" rel="alternate"></link><link href="./feeds/fpgacpld.atom.xml" rel="self"></link><id>./</id><updated>2020-05-19T09:16:00+08:00</updated><entry><title>Chinese Altera Max II CPLDs - Hello World in Ubuntu</title><link href="./chinese-altera-cpld.html" rel="alternate"></link><published>2020-05-19T09:16:00+08:00</published><updated>2020-05-19T09:16:00+08:00</updated><author><name>zst123</name></author><id>tag:None,2020-05-19:./chinese-altera-cpld.html</id><summary type="html">&lt;p&gt;About a year ago, I bought some cheap Altera MAX II CPLD boards from eBay. I remember it was pretty cheap, about USD10 with free shipping for both the board and programmer. However, I never really got to it because of my busy schedule last year. Now with stay home measures in place due to the pandemic, I finally have time to start learning about CPLDs.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;About a year ago, I bought some cheap Altera MAX II CPLD boards from eBay. I remember it was pretty cheap, about USD10 with free shipping for both the board and programmer.&lt;/p&gt;
 &lt;p&gt;However, I never really got to it because of my busy schedule last year. Now with stay home measures in place due to the pandemic, I finally have time to start learning about CPLDs.&lt;/p&gt;
-&lt;p&gt;&lt;img src="chinese-altera-cpld_image1.jpg"
+&lt;p&gt;&lt;img src="./chinese-altera-cpld_image1.jpg"
      alt="EPM240 Dev Board"
      style="width: 50%; margin: auto; display: block;"/&gt;&lt;/p&gt;
 &lt;p&gt;There are a few guides on how to program this CPLD board on Windows OS. Hence, in this post, I'll focus on going through with my Ubuntu setup.&lt;/p&gt;
@@ -31,12 +31,12 @@
 &lt;h4&gt;Install Quartus Prime Lite&lt;/h4&gt;
 &lt;p&gt;As of writing, the latest version of the IDE is &lt;strong&gt;Quartus Prime Lite Edition 19.1&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;To keep things simple, I downloaded the Combined Files installer: &lt;code&gt;Quartus-lite-19.1.0.670-linux.tar&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src="chinese-altera-cpld_image2.png"
+&lt;p&gt;&lt;img src="./chinese-altera-cpld_image2.png"
      alt="Extracted files"
      style="width: 75%; margin: auto; display: block;"/&gt;&lt;/p&gt;
 &lt;p&gt;After extracting, run &lt;code&gt;bash setup.sh&lt;/code&gt; in Terminal.&lt;/p&gt;
 &lt;p&gt;As the install files are huge, I decided to uncheck all other devices except for the Max II series.&lt;/p&gt;
-&lt;p&gt;&lt;img src="chinese-altera-cpld_image3.png"
+&lt;p&gt;&lt;img src="./chinese-altera-cpld_image3.png"
      alt="Installer"
      style="width: 75%; margin: auto; display: block;"/&gt;&lt;/p&gt;
 &lt;h4&gt;Starting Quartus Prime Lite&lt;/h4&gt;
@@ -47,10 +47,10 @@
 &lt;p&gt;Finally, start Quartus Prime Lite&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;~/intelFPGA_lite/19.1/quartus/bin/quartus &amp;amp;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;You will see the start screen.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="chinese-altera-cpld_image4.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="./chinese-altera-cpld_image4.png"&gt;&lt;/p&gt;
 &lt;h4&gt;Hello World Project&lt;/h4&gt;
 &lt;p&gt;Create a new project using &lt;code&gt;New Project Wizard&lt;/code&gt; and then create a new &lt;code&gt;Verilog HDL file&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="chinese-altera-cpld_image5.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="./chinese-altera-cpld_image5.png"&gt;&lt;/p&gt;
 &lt;p&gt;This the Verilog code for blinking an LED. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;// Pin 12 = clk (50MHz Crystal)&lt;/span&gt;
 &lt;span class="c1"&gt;// Pin 77 = led (Red LED)&lt;/span&gt;
@@ -72,11 +72,11 @@
 
 
 &lt;p&gt;Make sure to assign the pins under &lt;code&gt;Pin Planner&lt;/code&gt; too.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="chinese-altera-cpld_image6a.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="./chinese-altera-cpld_image6a.png"&gt;&lt;/p&gt;
 &lt;p&gt;After which, click on &lt;code&gt;Programmer&lt;/code&gt; &amp;gt; &lt;code&gt;Auto detect&lt;/code&gt; &amp;gt; &lt;code&gt;Start&lt;/code&gt; to program the board.&lt;/p&gt;
 &lt;h4&gt;Launch Script &amp;amp; Dark Theme Workaround&lt;/h4&gt;
 &lt;p&gt;I have been using a dark theme on my system. However, the &lt;code&gt;Pin Planner&lt;/code&gt; is unusable with a dark theme. As seen below, the selection rows have a white text and a bright background.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="chinese-altera-cpld_image6b.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="./chinese-altera-cpld_image6b.png"&gt;&lt;/p&gt;
 &lt;p&gt;The workaround is to &lt;a href="https://askubuntu.com/a/427440"&gt;launch the app with a white theme&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I decided to create a launch script to do everything for me.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Settings&lt;/span&gt;
