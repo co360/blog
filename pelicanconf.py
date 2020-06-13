@@ -2,6 +2,11 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+# Plugins
+PLUGIN_PATHS = ['./pelican-plugins']
+PLUGINS = ['summary']
+
+
 AUTHOR = 'zst123'
 SITENAME = "Manzel's Blog"
 SITEURL = ''
