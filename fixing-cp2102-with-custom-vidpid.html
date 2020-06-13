@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Fixing CP2102 with custom VID/PID</title>
+
+    <link rel="stylesheet" href="./theme/css/normalize.css" />
+    <link rel="stylesheet" href="./theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="./theme/css/style.css" />
+    <link rel="stylesheet" href="./theme/css/pygments.css" />	
+    <script src="./theme/js/custom.modernizr.js"></script>
+
+    <!-- So Firefox can bookmark->"abo this site" -->
+        <link href="feeds/all.atom.xml" rel="alternate" title="Manzel's Blog" type="application/atom+xml">
+
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href=".">Manzel's Blog</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="./fixing-cp2102-with-custom-vidpid.html" rel="bookmark"
+        title="Permalink to Fixing CP2102 with custom VID/PID">Fixing CP2102 with custom VID/PID</a></h3>
+    </header>
+
+<h6 class="subheader" title="2020-06-13T15:54:00+08:00">Sat 13 June 2020
+</h6>
+
+
+    <p>I bought some cheap CP2012 serial IC chips from AliExpress. Maybe it was too cheap at only SGD3.86 for 5 pieces with free shipping. Of course, I should have expected some issues to pop up when I started using it.</p>
+<p><img src="./fixing-cp2102-with-custom-vidpid_image1.jpg" alt="CP2102" style="width: 30%; margin: auto; display: block;"/></p>
+
+
+<p>Before I elaborate on the issue, I'd like to show off my fine hand-soldering skills. <code>heheh</code></p>
+<p>I did not have a hot-air gun so I soldered it using a soldering iron with lots of flux.</p>
+<p><img alt="soldered cp2102" src="./fixing-cp2102-with-custom-vidpid_image2.jpg"></p>
+<h3>The Issue - Custom VID &amp; PID</h3>
+<p>The issue is rather simple and so is fixing it too.</p>
+<p>The device is a Silicon Labs CP2102. However, upon connecting the USB port to my computer, I realised that it was detected as a different device.</p>
+<div class="highlight"><pre><span></span><code>$ lsusb
+Bus <span class="m">006</span> Device <span class="m">010</span>: ID 11ca:0204 VeriFone Inc VeriFone USB to UART Bridge Controller
+</code></pre></div>
+
+
+<p>It appears that the CP2012 can actually be configured or pre-programmed to have a different VID/PID. In Windows, it can be done using the <code>CP21xxCustomizationUtility.exe</code> tool found in AN721.</p>
+<ul>
+<li><a href="https://www.silabs.com/documents/public/application-notes/AN721.pdf">AN721 Documentations (.pdf file)</a></li>
+<li><a href="https://www.silabs.com/documents/public/example-code/AN721SW.zip">AN721 Software (.zip file)</a></li>
+</ul>
+<p>However, resetting it to default is a challenge, because one must create and install the custom driver for the custom VID/PID first, before using the tool to change it back to default.</p>
+<h3>Fixing it in Linux</h3>
+<p>It is easier to fix it in Linux, because the kernel allows for easy overriding and loading of drivers for a different VID/PID device without modifying the driver.</p>
+<p>I also found an unofficial command-line tool to program these CP2102 easily. <a href="https://github.com/DiUS/cp210x-cfg"><code>cp210x-cfg</code></a>.</p>
+<hr>
+<p>First, connect and check the ID of the device. Here, mine is detected as <code>11ca:0204</code>.</p>
+<div class="highlight"><pre><span></span><code>$ lsusb
+Bus <span class="m">006</span> Device <span class="m">010</span>: ID 11ca:0204 VeriFone Inc VeriFone USB to UART Bridge Controller
+</code></pre></div>
+
+
+<p>Load the driver and override the ID to be our custom ID. This must be done as superuser.</p>
+<div class="highlight"><pre><span></span><code>$ sudo -s
+<span class="c1"># modprobe cp210x</span>
+<span class="c1"># echo 11ca 0204 &gt; /sys/bus/usb-serial/drivers/cp210x/new_id </span>
+<span class="c1"># exit</span>
+</code></pre></div>
+
+
+<p>Now it will be detected as a proper serial device.</p>
+<div class="highlight"><pre><span></span><code>$ ls /dev/serial/by-id/
+usb-Silicon_Labs_VeriFone_USB_to_UART_Bridge_Controller_0001-if00-port0
+
+$ realpath /dev/serial/by-id/usb-Silicon_Labs*
+/dev/ttyUSB0
+</code></pre></div>
+
+
+<p>You can use it as it is, however this means we have to keep overriding the ID for every PC we connect to.</p>
+<hr>
+<p>We can change it back to the original VID &amp; PID using the <a href="https://github.com/DiUS/cp210x-cfg"><code>cp210x-cfg</code></a> tool.</p>
+<div class="highlight"><pre><span></span><code>$ git clone https://github.com/DiUS/cp210x-cfg
+$ <span class="nb">cd</span> cp210x-cfg/
+</code></pre></div>
+
+
+<p>Install dependencies and make it.</p>
+<div class="highlight"><pre><span></span><code>$ sudo apt install -y libusb-1.0-0-dev
+$ make
+</code></pre></div>
+
+
+<p>Program it back to the original VID/PID. From AN721 documentations, it tells us that the default for CP2102 is <code>10C4:EA60</code>.</p>
+<div class="highlight"><pre><span></span><code>$ sudo ./cp210x-cfg -m 11ca:0204 -V 0x10C4 -P 0xEA60
+</code></pre></div>
+
+
+<p>Finally, we have the original ID back</p>
+<div class="highlight"><pre><span></span><code>$ lsusb
+Bus <span class="m">006</span> Device <span class="m">065</span>: ID 10c4:ea60 Silicon Labs CP210x UART Bridge
+</code></pre></div>
+
+
+<p>Reload the original serial driver again.</p>
+<div class="highlight"><pre><span></span><code>$ modprobe cp210x
+</code></pre></div>
+
+
+<hr>
+<p>For completeness, let's change the product name too</p>
+<p>Before changing</p>
+<div class="highlight"><pre><span></span><code>$ sudo ./cp210x-cfg -m 10C4:EA60
+ID 10c4:ea60 @ bus <span class="m">006</span>, dev <span class="m">105</span>: VeriFone USB to UART Bridge Controller
+Model: CP2102
+Vendor ID: 10c4
+Product ID: ea60
+Name: VeriFone USB to UART Bridge Controller
+Serial: <span class="m">0001</span>
+</code></pre></div>
+
+
+<p>Command to change</p>
+<div class="highlight"><pre><span></span><code>$ sudo ./cp210x-cfg -m 10C4:EA60 -N <span class="s2">&quot;zst123&#39;s CP2102 UART Bridge&quot;</span>
+</code></pre></div>
+
+
+<p>After changing</p>
+<div class="highlight"><pre><span></span><code>$ sudo ./cp210x-cfg -m 10C4:EA60
+ID 10c4:ea60 @ bus <span class="m">006</span>, dev <span class="m">106</span>: zst123<span class="s1">&#39;s CP2102 UART Bridge</span>
+<span class="s1">Model: CP2102</span>
+<span class="s1">Vendor ID: 10c4</span>
+<span class="s1">Product ID: ea60</span>
+<span class="s1">Name: zst123&#39;</span>s CP2102 UART Bridge
+Serial: <span class="m">0001</span>
+</code></pre></div>
+
+
+<h3>Conclusion</h3>
+<p>This gave me a interesting adventure into understanding how USB devices are matched to their drivers using its VID/PID. Buying electronics from these non-reputable sellers can sometimes provide some fun experiences to improve your troubleshooting skills in the process. It also comes at a low cost too.</p>
+<p class="subheader">Category: <a href="./category/electronics.html">Electronics</a>
+
+    Tagged: 
+    <a href="./tag/cp2102.html">CP2102 </a>
+    <a href="./tag/serial.html">Serial </a>
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="./archives.html">Archives</a>
+            <li><a href="./tags.html">Tags</a>
+
+
+                <li><a href="./feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="./category/electronics.html">Electronics</a></li>
+            <li><a href="./category/fpgacpld.html">FPGA/CPLD</a></li>
+            <li><a href="./category/updates.html">Updates</a></li>
+   
+        </ul>
+
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://manzelseet.com">Portfolio</a></li>
+            <li><a href="https://github.com/zst123">Github</a></li>
+            <li><a href="https://www.linkedin.com/in/manzelseet/">LinkedIn</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+                <p>Manzel's Blog by zst123</p>
+            </div>
+            </div>
+    </div>
+</footer>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Manzel's Blog - Electronics</title><link href="./" rel="alternate"></link><link href="./feeds/electronics.atom.xml" rel="self"></link><id>./</id><updated>2020-06-13T15:54:00+08:00</updated><entry><title>Fixing CP2102 with custom VID/PID</title><link href="./fixing-cp2102-with-custom-vidpid.html" rel="alternate"></link><published>2020-06-13T15:54:00+08:00</published><updated>2020-06-13T15:54:00+08:00</updated><author><name>zst123</name></author><id>tag:None,2020-06-13:./fixing-cp2102-with-custom-vidpid.html</id><summary type="html">&lt;p&gt;I bought some cheap CP2012 serial IC chips from AliExpress. Maybe it was too cheap at only SGD3.86 for 5 pieces with free shipping. Of course, I should have expected some issues to pop up when I started using it.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="CP2102" src="./fixing-cp2102-with-custom-vidpid_image1.jpg" style="width: 30%; margin: auto; display: block;"/&gt;&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I bought some cheap CP2012 serial IC chips from AliExpress. Maybe it was too cheap at only SGD3.86 for 5 pieces with free shipping. Of course, I should have expected some issues to pop up when I started using it.&lt;/p&gt;
+&lt;p&gt;&lt;img src="./fixing-cp2102-with-custom-vidpid_image1.jpg" alt="CP2102" style="width: 30%; margin: auto; display: block;"/&gt;&lt;/p&gt;
+
+
+&lt;p&gt;Before I elaborate on the issue, I'd like to show off my fine hand-soldering skills. &lt;code&gt;heheh&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;I did not have a hot-air gun so I soldered it using a soldering iron with lots of flux.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="soldered cp2102" src="./fixing-cp2102-with-custom-vidpid_image2.jpg"&gt;&lt;/p&gt;
+&lt;h3&gt;The Issue - Custom VID &amp;amp; PID&lt;/h3&gt;
+&lt;p&gt;The issue is rather simple and so is fixing it too.&lt;/p&gt;
+&lt;p&gt;The device is a Silicon Labs CP2102. However, upon connecting the USB port to my computer, I realised that it was detected as a different device.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ lsusb
+Bus &lt;span class="m"&gt;006&lt;/span&gt; Device &lt;span class="m"&gt;010&lt;/span&gt;: ID 11ca:0204 VeriFone Inc VeriFone USB to UART Bridge Controller
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;It appears that the CP2012 can actually be configured or pre-programmed to have a different VID/PID. In Windows, it can be done using the &lt;code&gt;CP21xxCustomizationUtility.exe&lt;/code&gt; tool found in AN721.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.silabs.com/documents/public/application-notes/AN721.pdf"&gt;AN721 Documentations (.pdf file)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.silabs.com/documents/public/example-code/AN721SW.zip"&gt;AN721 Software (.zip file)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;However, resetting it to default is a challenge, because one must create and install the custom driver for the custom VID/PID first, before using the tool to change it back to default.&lt;/p&gt;
+&lt;h3&gt;Fixing it in Linux&lt;/h3&gt;
+&lt;p&gt;It is easier to fix it in Linux, because the kernel allows for easy overriding and loading of drivers for a different VID/PID device without modifying the driver.&lt;/p&gt;
+&lt;p&gt;I also found an unofficial command-line tool to program these CP2102 easily. &lt;a href="https://github.com/DiUS/cp210x-cfg"&gt;&lt;code&gt;cp210x-cfg&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;First, connect and check the ID of the device. Here, mine is detected as &lt;code&gt;11ca:0204&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ lsusb
+Bus &lt;span class="m"&gt;006&lt;/span&gt; Device &lt;span class="m"&gt;010&lt;/span&gt;: ID 11ca:0204 VeriFone Inc VeriFone USB to UART Bridge Controller
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Load the driver and override the ID to be our custom ID. This must be done as superuser.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo -s
+&lt;span class="c1"&gt;# modprobe cp210x&lt;/span&gt;
+&lt;span class="c1"&gt;# echo 11ca 0204 &amp;gt; /sys/bus/usb-serial/drivers/cp210x/new_id &lt;/span&gt;
+&lt;span class="c1"&gt;# exit&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now it will be detected as a proper serial device.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ ls /dev/serial/by-id/
+usb-Silicon_Labs_VeriFone_USB_to_UART_Bridge_Controller_0001-if00-port0
+
+$ realpath /dev/serial/by-id/usb-Silicon_Labs*
+/dev/ttyUSB0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can use it as it is, however this means we have to keep overriding the ID for every PC we connect to.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;We can change it back to the original VID &amp;amp; PID using the &lt;a href="https://github.com/DiUS/cp210x-cfg"&gt;&lt;code&gt;cp210x-cfg&lt;/code&gt;&lt;/a&gt; tool.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ git clone https://github.com/DiUS/cp210x-cfg
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; cp210x-cfg/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Install dependencies and make it.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo apt install -y libusb-1.0-0-dev
+$ make
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Program it back to the original VID/PID. From AN721 documentations, it tells us that the default for CP2102 is &lt;code&gt;10C4:EA60&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo ./cp210x-cfg -m 11ca:0204 -V 0x10C4 -P 0xEA60
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Finally, we have the original ID back&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ lsusb
+Bus &lt;span class="m"&gt;006&lt;/span&gt; Device &lt;span class="m"&gt;065&lt;/span&gt;: ID 10c4:ea60 Silicon Labs CP210x UART Bridge
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Reload the original serial driver again.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ modprobe cp210x
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;p&gt;For completeness, let's change the product name too&lt;/p&gt;
+&lt;p&gt;Before changing&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo ./cp210x-cfg -m 10C4:EA60
+ID 10c4:ea60 @ bus &lt;span class="m"&gt;006&lt;/span&gt;, dev &lt;span class="m"&gt;105&lt;/span&gt;: VeriFone USB to UART Bridge Controller
+Model: CP2102
+Vendor ID: 10c4
+Product ID: ea60
+Name: VeriFone USB to UART Bridge Controller
+Serial: &lt;span class="m"&gt;0001&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Command to change&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo ./cp210x-cfg -m 10C4:EA60 -N &lt;span class="s2"&gt;&amp;quot;zst123&amp;#39;s CP2102 UART Bridge&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After changing&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo ./cp210x-cfg -m 10C4:EA60
+ID 10c4:ea60 @ bus &lt;span class="m"&gt;006&lt;/span&gt;, dev &lt;span class="m"&gt;106&lt;/span&gt;: zst123&lt;span class="s1"&gt;&amp;#39;s CP2102 UART Bridge&lt;/span&gt;
+&lt;span class="s1"&gt;Model: CP2102&lt;/span&gt;
+&lt;span class="s1"&gt;Vendor ID: 10c4&lt;/span&gt;
+&lt;span class="s1"&gt;Product ID: ea60&lt;/span&gt;
+&lt;span class="s1"&gt;Name: zst123&amp;#39;&lt;/span&gt;s CP2102 UART Bridge
+Serial: &lt;span class="m"&gt;0001&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;This gave me a interesting adventure into understanding how USB devices are matched to their drivers using its VID/PID. Buying electronics from these non-reputable sellers can sometimes provide some fun experiences to improve your troubleshooting skills in the process. It also comes at a low cost too.&lt;/p&gt;</content><category term="Electronics"></category><category term="CP2102"></category><category term="Serial"></category></entry></feed>
