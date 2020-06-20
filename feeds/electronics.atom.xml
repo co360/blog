@@ -219,9 +219,11 @@ So far I only soldered the Bare Bears board. This is how it looks like.&lt;/p&gt
 &lt;p&gt;I think only the downside of Elecrow PCB might be their slightly slower production time and lack of live feedback on the production process.&lt;/p&gt;
 &lt;p&gt;There are many attractive features of Elecrow PCB. I particularly like their soldermask/silkscreen colours and the really flat HASL finish.&lt;/p&gt;
 &lt;p&gt;Do let me know if you find my review helpful. I hope to do more of such blog posts in the future.&lt;/p&gt;</content><category term="Electronics"></category><category term="PCB"></category><category term="Elecrow"></category></entry><entry><title>Fixing CP2102 with custom VID/PID</title><link href="./fixing-cp2102-with-custom-vidpid.html" rel="alternate"></link><published>2020-06-13T15:54:00+08:00</published><updated>2020-06-13T15:54:00+08:00</updated><author><name>zst123</name></author><id>tag:None,2020-06-13:./fixing-cp2102-with-custom-vidpid.html</id><summary type="html">&lt;p&gt;I bought some cheap CP2012 serial IC chips from AliExpress. Maybe it was too cheap at only SGD3.86 for 5 pieces with free shipping. Of course, I should have expected some issues to pop up when I started using it.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="CP2102" src="./fixing-cp2102-with-custom-vidpid_image1.jpg" style="width: 30%; margin: auto; display: block;"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="CP2102" onerror="this.onerror=null; this.src='/fixing-cp2102-with-custom-vidpid_image1.jpg'" src="./fixing-cp2102-with-custom-vidpid_image1.jpg" style="width: 30%; margin: auto; display: block;"/&gt;&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;I bought some cheap CP2012 serial IC chips from AliExpress. Maybe it was too cheap at only SGD3.86 for 5 pieces with free shipping. Of course, I should have expected some issues to pop up when I started using it.&lt;/p&gt;
-&lt;p&gt;&lt;img src="./fixing-cp2102-with-custom-vidpid_image1.jpg" alt="CP2102" style="width: 30%; margin: auto; display: block;"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="./fixing-cp2102-with-custom-vidpid_image1.jpg"
+     onerror="this.onerror=null; this.src='/fixing-cp2102-with-custom-vidpid_image1.jpg'"
+     alt="CP2102" style="width: 30%; margin: auto; display: block;"/&gt;&lt;/p&gt;
 
 
 &lt;p&gt;Before I elaborate on the issue, I'd like to show off my fine hand-soldering skills. &lt;code&gt;heheh&lt;/code&gt;&lt;/p&gt;

@@ -219,9 +219,11 @@ So far I only soldered the Bare Bears board. This is how it looks like.&lt;/p&gt
 &lt;p&gt;I think only the downside of Elecrow PCB might be their slightly slower production time and lack of live feedback on the production process.&lt;/p&gt;
 &lt;p&gt;There are many attractive features of Elecrow PCB. I particularly like their soldermask/silkscreen colours and the really flat HASL finish.&lt;/p&gt;
 &lt;p&gt;Do let me know if you find my review helpful. I hope to do more of such blog posts in the future.&lt;/p&gt;</content><category term="Electronics"></category><category term="PCB"></category><category term="Elecrow"></category></entry><entry><title>Fixing CP2102 with custom VID/PID</title><link href="./fixing-cp2102-with-custom-vidpid.html" rel="alternate"></link><published>2020-06-13T15:54:00+08:00</published><updated>2020-06-13T15:54:00+08:00</updated><author><name>zst123</name></author><id>tag:None,2020-06-13:./fixing-cp2102-with-custom-vidpid.html</id><summary type="html">&lt;p&gt;I bought some cheap CP2012 serial IC chips from AliExpress. Maybe it was too cheap at only SGD3.86 for 5 pieces with free shipping. Of course, I should have expected some issues to pop up when I started using it.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="CP2102" src="./fixing-cp2102-with-custom-vidpid_image1.jpg" style="width: 30%; margin: auto; display: block;"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="CP2102" onerror="this.onerror=null; this.src='/fixing-cp2102-with-custom-vidpid_image1.jpg'" src="./fixing-cp2102-with-custom-vidpid_image1.jpg" style="width: 30%; margin: auto; display: block;"/&gt;&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;I bought some cheap CP2012 serial IC chips from AliExpress. Maybe it was too cheap at only SGD3.86 for 5 pieces with free shipping. Of course, I should have expected some issues to pop up when I started using it.&lt;/p&gt;
-&lt;p&gt;&lt;img src="./fixing-cp2102-with-custom-vidpid_image1.jpg" alt="CP2102" style="width: 30%; margin: auto; display: block;"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="./fixing-cp2102-with-custom-vidpid_image1.jpg"
+     onerror="this.onerror=null; this.src='/fixing-cp2102-with-custom-vidpid_image1.jpg'"
+     alt="CP2102" style="width: 30%; margin: auto; display: block;"/&gt;&lt;/p&gt;
 
 
 &lt;p&gt;Before I elaborate on the issue, I'd like to show off my fine hand-soldering skills. &lt;code&gt;heheh&lt;/code&gt;&lt;/p&gt;
@@ -376,10 +378,10 @@ Serial: &lt;span class="m"&gt;0001&lt;/span&gt;
 &lt;p&gt;Finally, start Quartus Prime Lite&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;~/intelFPGA_lite/19.1/quartus/bin/quartus &amp;amp;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;You will see the start screen.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="./chinese-altera-cpld_image4.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="start screen" src="./chinese-altera-cpld_image4.png"&gt;&lt;/p&gt;
 &lt;h4&gt;Hello World Project&lt;/h4&gt;
 &lt;p&gt;Create a new project using &lt;code&gt;New Project Wizard&lt;/code&gt; and then create a new &lt;code&gt;Verilog HDL file&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="./chinese-altera-cpld_image5.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="New Project Wizard" src="./chinese-altera-cpld_image5.png"&gt;&lt;/p&gt;
 &lt;p&gt;This the Verilog code for blinking an LED. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;// Pin 12 = clk (50MHz Crystal)&lt;/span&gt;
 &lt;span class="c1"&gt;// Pin 77 = led (Red LED)&lt;/span&gt;
@@ -401,11 +403,11 @@ Serial: &lt;span class="m"&gt;0001&lt;/span&gt;
 
 
 &lt;p&gt;Make sure to assign the pins under &lt;code&gt;Pin Planner&lt;/code&gt; too.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="./chinese-altera-cpld_image6a.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Pin planner" src="./chinese-altera-cpld_image6a.png"&gt;&lt;/p&gt;
 &lt;p&gt;After which, click on &lt;code&gt;Programmer&lt;/code&gt; &amp;gt; &lt;code&gt;Auto detect&lt;/code&gt; &amp;gt; &lt;code&gt;Start&lt;/code&gt; to program the board.&lt;/p&gt;
 &lt;h4&gt;Launch Script &amp;amp; Dark Theme Workaround&lt;/h4&gt;
 &lt;p&gt;I have been using a dark theme on my system. However, the &lt;code&gt;Pin Planner&lt;/code&gt; is unusable with a dark theme. As seen below, the selection rows have a white text and a bright background.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="./chinese-altera-cpld_image6b.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="selection rows" src="./chinese-altera-cpld_image6b.png"&gt;&lt;/p&gt;
 &lt;p&gt;The workaround is to &lt;a href="https://askubuntu.com/a/427440"&gt;launch the app with a white theme&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I decided to create a launch script to do everything for me.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Settings&lt;/span&gt;

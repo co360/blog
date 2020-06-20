@@ -104,10 +104,10 @@
 <p>Finally, start Quartus Prime Lite</p>
 <p><code>~/intelFPGA_lite/19.1/quartus/bin/quartus &amp;</code></p>
 <p>You will see the start screen.</p>
-<p><img alt="" src="./chinese-altera-cpld_image4.png"></p>
+<p><img alt="start screen" src="./chinese-altera-cpld_image4.png"></p>
 <h4>Hello World Project</h4>
 <p>Create a new project using <code>New Project Wizard</code> and then create a new <code>Verilog HDL file</code>.</p>
-<p><img alt="" src="./chinese-altera-cpld_image5.png"></p>
+<p><img alt="New Project Wizard" src="./chinese-altera-cpld_image5.png"></p>
 <p>This the Verilog code for blinking an LED. </p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Pin 12 = clk (50MHz Crystal)</span>
 <span class="c1">// Pin 77 = led (Red LED)</span>
@@ -129,11 +129,11 @@
 
 
 <p>Make sure to assign the pins under <code>Pin Planner</code> too.</p>
-<p><img alt="" src="./chinese-altera-cpld_image6a.png"></p>
+<p><img alt="Pin planner" src="./chinese-altera-cpld_image6a.png"></p>
 <p>After which, click on <code>Programmer</code> &gt; <code>Auto detect</code> &gt; <code>Start</code> to program the board.</p>
 <h4>Launch Script &amp; Dark Theme Workaround</h4>
 <p>I have been using a dark theme on my system. However, the <code>Pin Planner</code> is unusable with a dark theme. As seen below, the selection rows have a white text and a bright background.</p>
-<p><img alt="" src="./chinese-altera-cpld_image6b.png"></p>
+<p><img alt="selection rows" src="./chinese-altera-cpld_image6b.png"></p>
 <p>The workaround is to <a href="https://askubuntu.com/a/427440">launch the app with a white theme</a>.</p>
 <p>I decided to create a launch script to do everything for me.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Settings</span>
