@@ -1,5 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Manzel's Blog - Electronics</title><link href="./" rel="alternate"></link><link href="./feeds/electronics.atom.xml" rel="self"></link><id>./</id><updated>2020-06-13T15:54:00+08:00</updated><entry><title>Fixing CP2102 with custom VID/PID</title><link href="./fixing-cp2102-with-custom-vidpid.html" rel="alternate"></link><published>2020-06-13T15:54:00+08:00</published><updated>2020-06-13T15:54:00+08:00</updated><author><name>zst123</name></author><id>tag:None,2020-06-13:./fixing-cp2102-with-custom-vidpid.html</id><summary type="html">&lt;p&gt;I bought some cheap CP2012 serial IC chips from AliExpress. Maybe it was too cheap at only SGD3.86 for 5 pieces with free shipping. Of course, I should have expected some issues to pop up when I started using it.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Manzel's Blog - Electronics</title><link href="./" rel="alternate"></link><link href="./feeds/electronics.atom.xml" rel="self"></link><id>./</id><updated>2020-06-20T13:44:00+08:00</updated><entry><title>Elecrow PCB Review</title><link href="./elecrow-pcb-review.html" rel="alternate"></link><published>2020-06-20T13:44:00+08:00</published><updated>2020-06-20T13:44:00+08:00</updated><author><name>zst123</name></author><id>tag:None,2020-06-20:./elecrow-pcb-review.html</id><summary type="html">&lt;p&gt;PCB design art is something I have been experimenting with. Recently, I used Elecrow PCB who offers yellow soldermask with black silkscreen without additional cost.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="elecrow yellow" onerror="this.onerror=null; this.src='/elecrow-pcb-review_image1.jpg'" src="./elecrow-pcb-review_image1.jpg" style="width: 70%; margin: auto; display: block;"/&gt;&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;PCB design art is something I have been experimenting with. Recently, I used Elecrow PCB who offers yellow soldermask with black silkscreen without additional cost.&lt;/p&gt;
+&lt;p&gt;&lt;img src="./elecrow-pcb-review_image1.jpg"
+     onerror="this.onerror=null; this.src='/elecrow-pcb-review_image1.jpg'"
+     alt="elecrow yellow"
+     style="width: 70%; margin: auto; display: block;"/&gt;&lt;/p&gt;
+
+
+&lt;hr&gt;
+&lt;h3&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;There are many cheap prototype PCBs manufacturing services online. They can also produce boards in colors other than the conventional green.&lt;/p&gt;
+&lt;p&gt;&lt;img src="./elecrow-pcb-review_image2.png"
+     alt="jlcpcb colorful"
+     style="width: 60%; margin: auto; display: block;"/&gt;
+&lt;center&gt;&lt;i&gt;(Image above is from the JLCPCB Facebook page. This is an example of colorful PCBs.)&lt;/i&gt;&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;I got interested when I found out that Elecrow PCB offers yellow soldermask with black silkscreen without additional cost.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="(image of PDF document)" src="./elecrow-pcb-review_image3.png"&gt;&lt;/p&gt;
+&lt;p&gt;In comparison, JLCPCB only has the option for yellow PCBs with white silkscreen. PCBway offers black-on-yellow but at a higher cost than white-on-yellow.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;Review Objective&lt;/h3&gt;
+&lt;p&gt;I decided to try out Elecrow PCB and I ordered 2 boards. I was surprised at how well they produced it for the price.&lt;/p&gt;
+&lt;p&gt;I am writing this blog post because I could not find any recent reviews on Elecrow PCB.&lt;/p&gt;
+&lt;p&gt;This review is not paid for and I hope to share as much of my personal experience with you.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;Board Design&lt;/h3&gt;
+&lt;p&gt;I designed both my boards in KiCad. These are the 3D renders and later on, let's see how it compares to the actual board received&lt;/p&gt;
+&lt;p&gt;My first board is a badge design of the Bare Bears cartoon series. I manually panalized it to fit within 100mm x 100mm.&lt;/p&gt;
+&lt;p&gt;&lt;img src="./elecrow-pcb-review_image4.png"
+     alt="Board #1, 3D render"
+     style="max-height: 400px; margin: auto; display: block;"/&gt;&lt;/p&gt;
+&lt;p&gt;One potential problem of this board will be the tight corner in between the bear's legs (the smallest width here is about 1mm). I read Elecrow PCB can do a 0.8mm contour routing so I hope it will turn out nicely.&lt;/p&gt;
+&lt;p&gt;Another possible difficulty will be the panalization. I later realized that the mouse-bite and the tabs may make the board flimsy and I wonder how they will deal with it during manufacturing.&lt;/p&gt;
+&lt;p&gt;&lt;img src="./elecrow-pcb-review_image5.png"
+     alt="Board tight corner"
+     style="width: 80%; margin: auto; display: block;"/&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;My second board will be to try out the yellow soldermask. &lt;/p&gt;
+&lt;p&gt;&lt;img src="./elecrow-pcb-review_image6.png"
+     alt="3D render front"
+     style="width: 80%; margin: auto; display: block;"/&gt;&lt;/p&gt;
+&lt;p&gt;In this board, I added a plated slot and prototyping spaces in thhe empty space on the left.&lt;/p&gt;
+&lt;p&gt;On the back, I added images and halftones. Halftone is a technique used in printing to produce a gradient of color by using dots of different sizes.&lt;/p&gt;
+&lt;p&gt;&lt;img src="./elecrow-pcb-review_image7.png"
+     alt="3D render back"
+     style="width: 80%; margin: auto; display: block;"/&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;Gerber Generation&lt;/h3&gt;
+&lt;p&gt;It would be great if Elecrow could provide some instructions on how to export the Gerber files to their requirements.&lt;/p&gt;
+&lt;p&gt;I had to search online to see what settings other people used. I took reference from these websites.&lt;/p&gt;
+&lt;p&gt;In the end, I used these settings without any issues.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Kicad settings A" src="./elecrow-pcb-review_image8.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Kicad settings B" src="./elecrow-pcb-review_image9.png"&gt;&lt;/p&gt;
+&lt;p&gt;After which, I renamed the Gerbers to the Elecrow filenames.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Layer&lt;/th&gt;
+&lt;th&gt;KiCad Filename&lt;/th&gt;
+&lt;th&gt;Elecrow Filename&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Top Copper&lt;/td&gt;
+&lt;td&gt;F_Cu.gtl&lt;/td&gt;
+&lt;td&gt;LcdPrototype.GTL&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Bottom Copper&lt;/td&gt;
+&lt;td&gt;B_Cu.gbl&lt;/td&gt;
+&lt;td&gt;LcdPrototype.GBL&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Top Soldermask&lt;/td&gt;
+&lt;td&gt;F_Mask.gts&lt;/td&gt;
+&lt;td&gt;LcdPrototype.GTS&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Bottom Soldermask&lt;/td&gt;
+&lt;td&gt;B_Mask.gbs&lt;/td&gt;
+&lt;td&gt;LcdPrototype.GBS&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Top Silkscreen&lt;/td&gt;
+&lt;td&gt;F_SilkS.gto&lt;/td&gt;
+&lt;td&gt;LcdPrototype.GTO&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Bottom Silkscreen&lt;/td&gt;
+&lt;td&gt;B_SilkS.gbo&lt;/td&gt;
+&lt;td&gt;LcdPrototype.GBO&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Non-Plated Drill Holes&lt;/td&gt;
+&lt;td&gt;NPTH.drl&lt;/td&gt;
+&lt;td&gt;LcdPrototype-NPTH.TXT&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Plated Drill Holes&lt;/td&gt;
+&lt;td&gt;PTH.drl&lt;/td&gt;
+&lt;td&gt;LcdPrototype-PTH.TXT&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Board Outline&lt;/td&gt;
+&lt;td&gt;Edge_Cuts.gm1&lt;/td&gt;
+&lt;td&gt;LcdPrototype.GML&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3&gt;Ordering Process&lt;/h3&gt;
+&lt;p&gt;The website interface is simple. You specify details, such as the color, thickness and quantity.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="website interface" src="./elecrow-pcb-review_image10.png"&gt;&lt;/p&gt;
+&lt;p&gt;I should mention that Elecrow provides $5 worth of loyalty points to offset your first purchase. I forgot to use it at that point of time, so remember to make use of the points.&lt;/p&gt;
+&lt;p&gt;I chose the cheapest shipping. Each design costs US$4.90 and shipping of US$10.47 to Singapore. In total, I paid US$20.27. I submitted my zip files and waited.&lt;/p&gt;
+&lt;p&gt;For the next few days, I heard no news. There's no feedback or progress indicator like JLCPCB or PCBway. I can only see that it is in production. Hence, I assumed there was no issue with my uploaded files.&lt;/p&gt;
+&lt;p&gt;After exactly a week (5 working days + 2 weekends), the status changed from "Production" to "Shipped".&lt;/p&gt;
+&lt;p&gt;&lt;img alt="website interface" src="./elecrow-pcb-review_image11.png"&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;Shipping Issues&lt;/h3&gt;
+&lt;p&gt;If everything goes fine, Elecrow will send you an email with the tracking number and photos of the boards.&lt;/p&gt;
+&lt;p&gt;At the time when I ordered, it was during the COVID-19 global pandemic. Thus, my shipping experience has not been ideal due to delays and increased prices. Despite this, the Elecrow customer service has been very accommodating to me as I'll explain my story below.&lt;/p&gt;
+&lt;p&gt;In this case, I did not receive any email for one whole week before I decided to contact them. I got a reply and they told me that they will check with the post office.&lt;/p&gt;
+&lt;p&gt;&lt;img src="./elecrow-pcb-review_image12.png"
+     alt="email"
+     style="width: 80%; margin: auto; display: block;"/&gt;&lt;/p&gt;
+&lt;p&gt;The cheapest shipping option was PLT Express. Unfortunately, it so happened that they have suspended services due to the pandemic.&lt;/p&gt;
+&lt;p&gt;&lt;img src="./elecrow-pcb-review_image13.png"
+     alt="email"
+     style="width: 80%; margin: auto; display: block;"/&gt;&lt;/p&gt;
+&lt;p&gt;After a few emails back and forth, I was recommended to use Shenzhen DHL. I had to pay an additional $15.19 via their PayPal account.&lt;/p&gt;
+&lt;p&gt;And after they shipped it from there, they sent an email with the tracking number and photos of the boards.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="email" src="./elecrow-pcb-review_image17.png"&gt;&lt;/p&gt;
+&lt;h3&gt;Delivery&lt;/h3&gt;
+&lt;p&gt;With DHL expedited shipping, it will cost me double the price per board. But it was still somewhat affordable, thus I decided to go with it.&lt;/p&gt;
+&lt;p&gt;This brought the total cost to US$35.46.&lt;/p&gt;
+&lt;p&gt;With Shenzhen DHL, the package travelled from China to Singapore in a mere 2 days!&lt;/p&gt;
+&lt;p&gt;This is a summary of my waiting time.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Day&lt;/th&gt;
+&lt;th&gt;Date&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;23 Apr&lt;/td&gt;
+&lt;td&gt;I placed an order&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5 May&lt;/td&gt;
+&lt;td&gt;Status on website changed to "Shipped"&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;11 May&lt;/td&gt;
+&lt;td&gt;I emailed them to ask for tracking number&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;12 May&lt;/td&gt;
+&lt;td&gt;They replied; they will follow up from the post office&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;21 May&lt;/td&gt;
+&lt;td&gt;Informed me that PLT Express is suspended&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;26 May&lt;/td&gt;
+&lt;td&gt;Package returned from post office &amp;amp; shipped using DHL that night&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;28 May&lt;/td&gt;
+&lt;td&gt;Package arrived&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;If you minus the time wasted due to shipping issues, I could hhave possibly gotten my package in slightly over a week with the fastest shipping.&lt;/p&gt;
+&lt;h3&gt;First Impressions&lt;/h3&gt;
+&lt;h5&gt;Packaging&lt;/h5&gt;
+&lt;p&gt;The box is filled with lots of bubble wrap and packaged very well.&lt;/p&gt;
+&lt;p&gt;&lt;img src="./elecrow-pcb-review_image14.jpg"
+     alt="packaging"
+     style="width: 80%; margin: auto; display: block;"/&gt;&lt;/p&gt;
+&lt;p&gt;As I said earlier, the BareBears board may be flimsy. I realized that Elecrow added pieces of hard cardboard before vacuum packing the PCBs in order to protect it during shipping.&lt;/p&gt;
+&lt;p&gt;&lt;img src="./elecrow-pcb-review_image15.jpg"
+     alt="packaging"
+     style="width: 80%; margin: auto; display: block;"/&gt;&lt;/p&gt;
+&lt;h5&gt;Quantity&lt;/h5&gt;
+&lt;p&gt;Many of these Chinese PCB manufacturers may sometimes throw in an additional board or two. Perhaps when if they have extra space on their production panel.&lt;/p&gt;
+&lt;p&gt;For both boards, I ordered only 10. I received 12 pieces of my panelized BareBear board. And to my surprise, I saw a whopping 16 pieces of my yellow PCBs!&lt;/p&gt;
+&lt;p&gt;&lt;img src="./elecrow-pcb-review_image16.jpg"
+     alt="packaging"
+     style="width: 80%; margin: auto; display: block;"/&gt;&lt;/p&gt;
+&lt;h3&gt;Fine details&lt;/h3&gt;
+&lt;p&gt;The one thing I like about Elecrow PCB is that they do not insert any order numbers or ID on your board.&lt;/p&gt;
+&lt;p&gt;&lt;img src="./elecrow-pcb-review_image18.jpg"
+     alt="packaging"
+     style="width: 80%; margin: auto; display: block;"/&gt;&lt;/p&gt;
+&lt;p&gt;It seems like the black soldermask is shiny, while the white silkscreen has a matte finish. I really love the matte white look.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image" src="./elecrow-pcb-review_image19.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Yellow soldermask looks quite dull on areas without copper. I wish I had done a polygon pour including the orphans/islands. The black silkscreen is shiny instead.&lt;/p&gt;
+&lt;p&gt;The halftone technique appears to work and it seems like they can do the really small dots too.&lt;/p&gt;
+&lt;p&gt;&lt;img src="./elecrow-pcb-review_image20.jpg"
+     alt="packaging"
+     style="width: 80%; margin: auto; display: block;"/&gt;&lt;/p&gt;
+&lt;p&gt;I'm amazed at the contour routing of the PCBs, especially the tight portion between the bear's legs. Although there is a dent at some areas (in this photo, the left foot has a dent in the middle).&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image" src="./elecrow-pcb-review_image21.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Also, the milled slot is not entirely smooth and has some unevenness.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image" src="./elecrow-pcb-review_image22.jpg"&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;Soldered Board&lt;/h3&gt;
+&lt;p&gt;I don't have any other complains for now, considering the low price for it's quality.
+So far I only soldered the Bare Bears board. This is how it looks like.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image" src="./elecrow-pcb-review_image23.jpg"&gt;
+&lt;img alt="image" src="./elecrow-pcb-review_image24.jpg"&gt;&lt;/p&gt;
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;I think only the downside of Elecrow PCB might be their slightly slower production time and lack of live feedback on the production process.&lt;/p&gt;
+&lt;p&gt;There are many attractive features of Elecrow PCB. I particularly like their soldermask/silkscreen colours and the really flat HASL finish.&lt;/p&gt;
+&lt;p&gt;Do let me know if you find my review helpful. I hope to do more of such blog posts in the future.&lt;/p&gt;</content><category term="Electronics"></category><category term="PCB"></category><category term="Elecrow"></category></entry><entry><title>Fixing CP2102 with custom VID/PID</title><link href="./fixing-cp2102-with-custom-vidpid.html" rel="alternate"></link><published>2020-06-13T15:54:00+08:00</published><updated>2020-06-13T15:54:00+08:00</updated><author><name>zst123</name></author><id>tag:None,2020-06-13:./fixing-cp2102-with-custom-vidpid.html</id><summary type="html">&lt;p&gt;I bought some cheap CP2012 serial IC chips from AliExpress. Maybe it was too cheap at only SGD3.86 for 5 pieces with free shipping. Of course, I should have expected some issues to pop up when I started using it.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="CP2102" src="./fixing-cp2102-with-custom-vidpid_image1.jpg" style="width: 30%; margin: auto; display: block;"/&gt;&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;I bought some cheap CP2012 serial IC chips from AliExpress. Maybe it was too cheap at only SGD3.86 for 5 pieces with free shipping. Of course, I should have expected some issues to pop up when I started using it.&lt;/p&gt;
 &lt;p&gt;&lt;img src="./fixing-cp2102-with-custom-vidpid_image1.jpg" alt="CP2102" style="width: 30%; margin: auto; display: block;"/&gt;&lt;/p&gt;
