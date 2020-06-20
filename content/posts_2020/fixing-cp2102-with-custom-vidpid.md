@@ -7,7 +7,9 @@ Authors: zst123
 
 I bought some cheap CP2012 serial IC chips from AliExpress. Maybe it was too cheap at only SGD3.86 for 5 pieces with free shipping. Of course, I should have expected some issues to pop up when I started using it.
 
-<img src="{attach}fixing-cp2102-with-custom-vidpid_image1.jpg" alt="CP2102" style="width: 30%; margin: auto; display: block;"/>
+<img src="{attach}fixing-cp2102-with-custom-vidpid_image1.jpg"
+     onerror="this.onerror=null; this.src='/fixing-cp2102-with-custom-vidpid_image1.jpg'"
+     alt="CP2102" style="width: 30%; margin: auto; display: block;"/>
 
 <!-- PELICAN_END_SUMMARY -->
 

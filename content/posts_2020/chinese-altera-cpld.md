@@ -67,13 +67,13 @@ Finally, start Quartus Prime Lite
 
 You will see the start screen.
 
-![]({attach}chinese-altera-cpld_image4.png)
+![start screen]({attach}chinese-altera-cpld_image4.png)
 
 #### Hello World Project
 
 Create a new project using `New Project Wizard` and then create a new `Verilog HDL file`.
 
-![]({attach}chinese-altera-cpld_image5.png)
+![New Project Wizard]({attach}chinese-altera-cpld_image5.png)
 
 This the Verilog code for blinking an LED. 
 
@@ -98,7 +98,7 @@ endmodule
 
 Make sure to assign the pins under `Pin Planner` too.
 
-![]({attach}chinese-altera-cpld_image6a.png)
+![Pin planner]({attach}chinese-altera-cpld_image6a.png)
 
 After which, click on `Programmer` > `Auto detect` > `Start` to program the board.
 
@@ -106,7 +106,7 @@ After which, click on `Programmer` > `Auto detect` > `Start` to program the boar
 
 I have been using a dark theme on my system. However, the `Pin Planner` is unusable with a dark theme. As seen below, the selection rows have a white text and a bright background.
 
-![]({attach}chinese-altera-cpld_image6b.png)
+![selection rows]({attach}chinese-altera-cpld_image6b.png)
 
 The workaround is to [launch the app with a white theme](https://askubuntu.com/a/427440).
 
